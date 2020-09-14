@@ -1,7 +1,18 @@
 编程风格：自上而下
-双指针：（1）一个指针记录target, 一个， move zeros
+双指针：（1）快慢指针， 一个慢（j）指针(target 位置），一个快（i）指针；当快指针指向的值不等于0时，将其与慢指针（此时的慢指针指向待交换的位置）进行交换，并使慢指针往后挪一位，指向新的代交换位置。move zeros
          (2) 双指针夹逼，对于求和问题，对数组sort, 然后左右两个指针夹逼， 3sum
+             left, right = x, len() - 1
+             while left < right: 
+                 if ...:
+                    left += 1
+                    right -= 1
+                    #去重复 while (left < right and nums[left] == nums[left - 1]): left += 1
+                 elif ...:
+                    left += 1
+                 else:
+                    right -=1 
          (3) 双指针夹逼，对于求最大面积（盛水最多）， 11. 盛水最多的容器
+             
          (4) 快慢指针， 解决linked list问题 141. Linked list cycle
 准备双指针模版
 
@@ -17,6 +28,16 @@ deque: （1）滑动窗口问题，记录访问数组的下标，239. 滑动窗�
             (5) reverse(): in-place 
 
 stack: 如果一个问题具有最近相关性，可以考虑用stack解决， 
-有序栈：（1）栈储存从小到大 84. 柱状图中最大的矩形
-        （2）栈储存从大到小 42. 接雨水
+有序栈：（1）栈储存从小到大的下标 84. 柱状图中最大的矩形
+         加两个哨兵，所以stack不会为空，还能保证所有元素出栈
+         height = [0] + height + [0]
+         stack = [0]
+         for i in range(1,len(height)):
+             while height[i] < height[stack[-1]]:
+                 curr = stack.pop()
+                 left = stack[-1]
+                 dis = i - left - 1
+                 area = max(area, dis * height[curr])
+        （2）栈储存从大到小的下标 42. 接雨水
+         不需要哨兵
 

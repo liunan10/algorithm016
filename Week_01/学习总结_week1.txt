@@ -1,0 +1,22 @@
+编程风格：自上而下
+双指针：（1）一个指针记录target, 一个， move zeros
+         (2) 双指针夹逼，对于求和问题，对数组sort, 然后左右两个指针夹逼， 3sum
+         (3) 双指针夹逼，对于求最大面积（盛水最多）， 11. 盛水最多的容器
+         (4) 快慢指针， 解决linked list问题 141. Linked list cycle
+准备双指针模版
+
+对于没有思路的问题
+（1） 暴力求解
+（2）找最近重复子问题（基于电脑运算的重复性）
+
+
+deque: （1）滑动窗口问题，记录访问数组的下标，239. 滑动窗口最大值 
+        （2）collections.deque, backed by a double linked list, 
+         （3）functions: append(x), appendleft(x), pop(), popleft(). O（1）
+          （4） remove(value): the first occurrence of value
+            (5) reverse(): in-place 
+
+stack: 如果一个问题具有最近相关性，可以考虑用stack解决， 
+有序栈：（1）栈储存从小到大 84. 柱状图中最大的矩形
+        （2）栈储存从大到小 42. 接雨水
+

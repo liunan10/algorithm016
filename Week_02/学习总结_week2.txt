@@ -1,0 +1,69 @@
+immutatble: string. tuple, int 
+mutatble: list, deque, dict, set
+if sort, use build in sort function for most of the data structures
+
+sort(item, key=, reverse=True) 
+One of the most powerful components of sorted() is the keyword argument called key.
+words = ['banana', 'pie', 'Washington', 'book']
+sorted(words, key=len)
+['pie', 'book', 'banana', 'Washington']
+
+数组用哈希存储
+（1）统计数组元素个数：from collections import Counter
+A Counter is a dict subclass for counting hashable objects
+ (2) 哈希初始{}, dict()
+(3) 高级container: from collections import defaultdict
+defaultdict is a subclass of the built-in dict class.
+this container can set default values for the keys in the dict
+
+dict遍历
+(1)for k, v in dic.items(): print(k, v)
+(2)for k in dic: print(k)
+(3)for k in dic: print(dic[k])
+
+dict pop(key): remove the item with the specific key name
+
+set: set 不能用{}initialize， instead, use set()
+
+heap: from collections import heapq
+二叉堆：用一位数组记录完全二叉树（除了最后一层不满，其余节点满），python是最小堆，如果实现最大堆，记录数值的负数，返回时在负回来
+heapq.heapify(heap) heapq.heappush(heap, value), heapq.heappop(heap)
+
+二维数据结构：
+class TreeNode:
+    def __init__(self, val):
+        self.val = val
+        self.left, self.right = None, None
+
+
+
+graph:
+dfs 模版
+visited = set() #the major difference from tree
+
+def dfs(node, visited) # define the parameters
+    if (node in visited): # terminator
+       return
+    visited.add(node)
+    for next in node.children():
+        if next not in visited:
+            dfs(next, visited)
+
+bfs 模版
+def bfs(graph, start, end):
+    from collections import deque
+    queue = deque()
+    queue.append(start)
+    while queue:
+        node = queue.popleft()
+        visited.add(node)
+
+        process(node)
+        nodes = generate_related_nodes(node)
+        queue.append(node)
+
+
+
+
+
+

@@ -1,0 +1,49 @@
+树的递归根据题目考虑用前序，中序，后序遍历 例如最近公共祖先，
+subproblem的分析很重要：根据定义，公共祖先的左右子树分别包括p, q
+
+recursion template
+
+def recursion(level, param1, param2, ...):
+    #recursion terminator
+    if level > max_level:
+        process_result
+        return
+  
+    #process logic in current level
+    process(level, data)
+
+    #drill down
+    self.recursion(level + 1, p1, ...)
+
+    #reverse the current level status if needed
+
+递归本质是找重复性
+分治和回溯的不同：分治最后的结果需要merge
+
+def divide_conquer(problem, param1, param2,...):
+    # recursion terminator
+    if problem is None:
+        print result
+        return
+
+    #prepare data
+    data = prepare_data(problem)
+    subproblem = split_problem(problem, data)
+
+    #conquer subproblems
+    subresult1 = self.divide_conquer(subproblem[0], p1, ...)
+    subresult2 = self.divide_conquer(subproblem[1], p1, ...)
+    subresult3 = self.divide_conquer(subproblem[2], p1, ...)
+    ...
+
+    #process and generate the final result
+    result = process_result(subresult1, subresult2, subresult3, ...)
+
+    # revert the current level states
+example pow(x, n)
+
+python list comprehension: [[x*x for x in sol] fpr sol in res]
+
+
+递归状态树
+

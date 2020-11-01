@@ -1,0 +1,14 @@
+backtracking-> backtracking on graph = dfs
+divide and conquer
+divide and conquer + optimal substructure -> dynamic programming/recursion + memorization
+memorization in python
+import functools
+@functools.lru_cache(None)
+maxsize, Expected first argument to be an integer, a callable, or None
+
+求最优解：
+（1）find the optimal structure
+(2) store the intermediate state
+(3) 状态转移方程：1维， 2维（字符串转换问题）
+
+

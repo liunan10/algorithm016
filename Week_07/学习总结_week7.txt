@@ -1,0 +1,86 @@
+单向bfs
+queue = [start]
+visited = set([start])
+while queue:
+    for i in range(len(queue)):
+        node = queue.popleft()
+        for child in get_neighbors(node):
+             if child in visited: continue
+             queue.append(child)
+             visited.add(child)
+
+双向bfs
+front = {start}
+back = {end}
+visited = {start, end}
+while front and end:
+    next_front = set()
+    for node in front:
+        process node
+        for child in get_neighbors(node):
+            if child in back:
+                return
+            if child not in visited:
+                next_front.add(child)
+                visited.add(child)
+   front = next_front
+   if len(front) > len(back):
+       front, back = back, front
+
+difference: (1) use two sets instead of deque. faster when checking whether the element exist in the other set
+            (2) switch to smaller set to bfs
+
+backtracking: 试错思想
+剪枝：N queens: column, pie, na to remove unnecessary search
+      generate parathesis: make sure left < n and left > right
+      
+coin change - climbing stairs - fibonacci sequence
+
+union find
+def init(p):
+    p = [i for i in range(n)]
+
+def union(self, p, i, j):
+    p1 = self.find(p, i)
+    p2 = self.find(p, j)
+    p[p1] = p2
+
+def find(self, p, i):
+    root = i
+    while p[root] != root:
+        root = p[root]
+
+    while p[i] != i:
+        x = i
+        i = p[i]
+        p[x] = root
+    return root
+
+
+trie tree
+def init(self):
+    root = {}
+    
+def insert(self, word):
+    node = self.root
+    for char in word:
+        node = node.setdefault(char, {})
+    node["#"] = "#"
+
+def search(self, word):
+    node = self.root
+    for char in word:
+        if char not in node:
+            return False
+        node = node[char]
+    return "#" in node
+
+def startsWith(self, prefix):
+    node = self.root
+    for char in prefix:
+        if char not in node:
+            return False
+        node = node[char]
+    return True
+ 
+        

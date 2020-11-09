@@ -1,0 +1,58 @@
+#quick sort
+  def quickSort(nums, begin, end):
+    if begin >= end: return
+    pivot = partition(nums, begin, end)
+    quickSort(nums, begin, pivot - 1)
+    quickSort(nums, pivot + 1, end)
+
+def partition(nums, begin, end):
+    counter, pivot = begin, end
+    for i in range(begin, end):
+        if nums[i] < nums[pivot]:
+            nums[i], nums[counter] = nums[counter], nums[i]
+            counter += 1
+    nums[counter], nums[pivot] = nums[pivot], nums[counter]
+    return counter
+
+ 
+#merge sort
+def mergeSort(nums, begin, end):
+    if begin >= end: return
+    mid = begin + (end - begin) // 2
+    mergeSort(nums, begin, mid)
+    mergeSort(nums, mid + 1, end)
+    merge(nums, begin, mid, end)
+
+def merge(nums, begin, mid, end):
+
+    i, j = begin, mid + 1
+    cache = []
+    while i <= mid and j <= end:
+        if nums[i] < nums[j]:
+            cache.append(nums[i])
+            i += 1
+        else:
+            cache.append(nums[j])
+            j += 1
+
+    while i <= mid:
+        cache.append(nums[i])
+        i += 1
+    while j <= end:
+        cache.append(nums[j])
+        j += 1
+    nums[begin: end + 1] = cache
+
+#位运算
+<< 1: 左移一位 
+>> 1: 右移一位， equivalent to // 2
+&1: 与1， 取最后一位  可判断奇偶
+
+x & (x - 1): 清零最低位的1
+x & -x: 得到最低位的1
+x & (~x) == 0
+
+布隆过滤器：can't find, 一定没有，find, 可能有，作为缓存查询
+
+least recently used (lru): dict + double linked list, OrderedDict
+
